@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from bs4 import BeautifulSoup
-import requests, Fighter, re
+import requests, re
 Soup = BeautifulSoup
 
 baseUrl = "http://www.sherdog.com/fighter/"
