@@ -1,6 +1,8 @@
 #!/usr/bin/python
 from bs4 import BeautifulSoup
 import requests, re
+
+
 Soup = BeautifulSoup
 
 baseUrl = "http://www.sherdog.com/fighter/"
@@ -14,9 +16,6 @@ print(fighterIndex)
 
 fighterName = pageContents.find('span', class_ = 'fn').getText()
 print('Fighter name: %s' % fighterName)
-
-#fighterNickname = pageContents.find('span', class_ = 'nickname').getText()
-#print(fighterNickname)
 
 fighterBirthday = pageContents.find('span', class_ = 'item birthday').span.getText()
 print("Birthday: %s" % fighterBirthday)
@@ -68,15 +67,9 @@ print(lSub)
 lDec = pageContents.find('div', class_ = 'bio_graph loser').contents[13].getText()
 print(lDec)
 
-#print(pageContents.find('div', {"class" : "bio_graph loser"}).findChild('span', {'class':'result'}))
-
 recordTable = pageContents.find('div', {"class" : "content table"}).tbody
 tableHead = recordTable.findChild('tr', {'class':'table_head'})
 tableRows = recordTable.findAll(class_ = {'odd','even'})
-#print(recordTable)
-
-#print(tableHead)
-#print(len(tableHead.findChildren()))
 
 fightRecord = []
 
@@ -95,6 +88,9 @@ for row in tableRows:
     rowList = [result,opponent,eventName,eventUrl,eventDate,method,referee,resultRound,finalRoundTime]
     fightRecord.append(rowList)
 
+# after every iteration of this loop, write the contents from current iteration + fighterIndex,
+# fighterName, fighterBirthday to sqlite db -- 'fighterRecordDB'
 for record in fightRecord:
     for i in range(len(record)):
         print record[i]
+    break
