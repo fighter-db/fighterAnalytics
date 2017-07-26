@@ -94,3 +94,5 @@ for record in fightRecord:
     for i in range(len(record)):
         print record[i]
     break
+
+#REFRESH GIT 
