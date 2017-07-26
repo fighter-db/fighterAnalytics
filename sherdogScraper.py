@@ -95,4 +95,4 @@ for record in fightRecord:
         print record[i]
     break
 
-#REFRESH GIT
+#REFRESH GIT 
